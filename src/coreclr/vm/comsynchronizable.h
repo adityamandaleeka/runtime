@@ -70,7 +70,7 @@ public:
 
 
     static FCDECL1(INT32,   GetManagedThreadId, ThreadBaseObject* th);
-    static FCDECL0(INT32,   GetOptimalMaxSpinWaitsPerSpinIteration);
+    static INT32 QCALLTYPE GetOptimalMaxSpinWaitsPerSpinIteration();
     static FCDECL1(void,    SpinWait,                       int iterations);
     static FCDECL0(Object*, GetCurrentThread);
     static FCDECL1(void,    Finalize,                       ThreadBaseObject* pThis);

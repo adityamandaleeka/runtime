@@ -1151,6 +1151,8 @@ void InitThreadManager()
     }
     CONTRACTL_END;
 
+    InitializeYieldProcessorNormalizedCrst();
+
     // All patched helpers should fit into one page.
     // If you hit this assert on retail build, there is most likely problem with BBT script.
     _ASSERTE_ALL_BUILDS((BYTE*)JIT_PatchedCodeLast - (BYTE*)JIT_PatchedCodeStart > (ptrdiff_t)0);
@@ -7186,7 +7188,6 @@ BOOL Thread::HaveExtraWorkForFinalizer()
         || Thread::CleanupNeededForFinalizedThread()
         || (m_DetachCount > 0)
         || SystemDomain::System()->RequireAppDomainCleanup()
-        || YieldProcessorNormalization::IsMeasurementScheduled()
         || ThreadStore::s_pThreadStore->ShouldTriggerGCForDeadThreads();
 }
 
@@ -7228,12 +7229,6 @@ void Thread::DoExtraWorkForFinalizer()
     if(m_DetachCount > 0 || Thread::CleanupNeededForFinalizedThread())
     {
         Thread::CleanupDetachedThreads();
-    }
-
-    if (YieldProcessorNormalization::IsMeasurementScheduled())
-    {
-        GCX_PREEMP();
-        YieldProcessorNormalization::PerformMeasurement();
     }
 
     ThreadStore::s_pThreadStore->TriggerGCForDeadThreadsIfNecessary();

@@ -440,19 +440,13 @@
                             <opcode name="Profiler" message="$(string.RuntimePublisher.ProfilerOpcodeMessage)" symbol="CLR_PROFILER_OPCODE" value="11"/>
                         </opcodes>
                     </task>
-                    <task name="YieldProcessorMeasurement" symbol="CLR_YIELD_PROCESSOR_MEASUREMENT_TASK"
-                          value="37" eventGUID="{B4AFC324-DECE-4B02-86DC-AAB8F22BC1B1}"
-                          message="$(string.RuntimePublisher.YieldProcessorMeasurementTaskMessage)">
-                        <opcodes>
-                        </opcodes>
-                    </task>
                     <task name="ThreadPoolMinMaxThreads" symbol="CLR_THREADPOOLMINMAXTHREADS_TASK"
                           value="38" eventGUID="{6D168D67-FB06-4A60-83BA-2544E817F6A3}"
                           message="$(string.RuntimePublisher.ThreadPoolMinMaxThreadsTaskMessage)">
                         <opcodes>
                         </opcodes>
                     </task>
-                <!--Next available ID is 39-->
+                <!--Next available ID is 39--> <!-- LOL WE TOOK ONE OUT -->
                 </tasks>
                 <!--Maps-->
                 <maps>
@@ -3083,19 +3077,6 @@
                         </Settings>
                       </UserData>
                     </template>
-
-                    <template tid="YieldProcessorMeasurement">
-                      <data name="ClrInstanceID" inType="win:UInt16"/>
-                      <data name="NsPerYield" inType="win:Double"/>
-                      <data name="EstablishedNsPerYield" inType="win:Double"/>
-                      <UserData>
-                        <Settings xmlns="myNs">
-                          <ClrInstanceID> %1 </ClrInstanceID>
-                          <NsPerYield> %2 </NsPerYield>
-                          <EstablishedNsPerYield> %3 </EstablishedNsPerYield>
-                        </Settings>
-                      </UserData>
-                    </template>
                 </templates>
 
                 <events>
@@ -3498,10 +3479,6 @@
                            keywords ="ThreadingKeyword"  opcode="Wait"
                            task="ThreadPoolWorkerThread"
                            symbol="ThreadPoolWorkerThreadWait" message="$(string.RuntimePublisher.ThreadPoolWorkerThreadEventMessage)"/>
-                  
-                    <event value="58" version="0" level="win:Informational" template="YieldProcessorMeasurement"
-                           keywords="ThreadingKeyword" task="YieldProcessorMeasurement" opcode="win:Info"
-                           symbol="YieldProcessorMeasurement" message="$(string.RuntimePublisher.YieldProcessorMeasurementEventMessage)"/>
 
                     <event value="59" version="0" level="win:Informational"  template="ThreadPoolMinMaxThreads"
                            keywords="ThreadingKeyword"
@@ -8404,7 +8381,7 @@
                 <string id="RuntimePublisher.WorkerThreadRetirementUnretireThreadEventMessage" value="WorkerThreadCount=%1;%nRetiredWorkerThreads=%2" />
                 <string id="RuntimePublisher.ThreadPoolWorkerThreadEventMessage" value="WorkerThreadCount=%1;%nRetiredWorkerThreadCount=%2;%nClrInstanceID=%3" />
                 <string id="RuntimePublisher.ThreadPoolMinMaxThreads" value="MinWorkerThreads=%1;%nMaxWorkerThreads=%2;%nMinIOCompletionThreads=%3;%nMaxIOCompletionThreads=%4;%nClrInstanceID=%5" />
-                <string id="RuntimePublisher.YieldProcessorMeasurementEventMessage" value="ClrInstanceID=%1;%nNsPerYield=%2;%nEstablishedNsPerYield=%3" />
+                <!-- string id="RuntimePublisher.YieldProcessorMeasurementEventMessage" value="ClrInstanceID=%1;%nNsPerYield=%2;%nEstablishedNsPerYield=%3" -->
                 <string id="RuntimePublisher.ThreadPoolWorkerThreadAdjustmentSampleEventMessage" value="Throughput=%1;%nClrInstanceID=%2" />
                 <string id="RuntimePublisher.ThreadPoolWorkerThreadAdjustmentAdjustmentEventMessage" value="AverageThroughput=%1;%nNewWorkerThreadCount=%2;%nReason=%3;%nClrInstanceID=%4" />
                 <string id="RuntimePublisher.ThreadPoolWorkerThreadAdjustmentStatsEventMessage" value="Duration=%1;%nThroughput=%2;%nThreadWave=%3;%nThroughputWave=%4;%nThroughputErrorEstimate=%5;%nAverageThroughputErrorEstimate=%6;%nThroughputRatio=%7;%nConfidence=%8;%nNewControlSetting=%9;%nNewThreadWaveMagnitude=%10;%nClrInstanceID=%11" />
@@ -8696,7 +8673,6 @@
                 <string id="RuntimePublisher.JitInstrumentationDataTaskMessage" value="JitInstrumentationData" />
                 <string id="RuntimePublisher.ExecutionCheckpointTaskMessage" value="ExecutionCheckpoint" />
                 <string id="RuntimePublisher.ProfilerTaskMessage" value="Profiler" />
-                <string id="RuntimePublisher.YieldProcessorMeasurementTaskMessage" value="YieldProcessorMeasurement" />
 
                 <string id="RundownPublisher.GCTaskMessage" value="GC" />
                 <string id="RundownPublisher.EEStartupTaskMessage" value="Runtime" />
