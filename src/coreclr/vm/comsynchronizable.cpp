@@ -1049,7 +1049,8 @@ FCIMPL1(void, ThreadNative::SetIsThreadpoolThread, ThreadBaseObject* thread)
 }
 FCIMPLEND
 
-INT32 QCALLTYPE ThreadNative::GetOptimalMaxSpinWaitsPerSpinIteration()
+
+extern "C" INT32 QCALLTYPE ThreadNative_GetOptimalMaxSpinWaitsPerSpinIteration()
 {
     QCALL_CONTRACT;
 
@@ -1065,6 +1066,23 @@ INT32 QCALLTYPE ThreadNative::GetOptimalMaxSpinWaitsPerSpinIteration()
 
     return optimalMaxNormalizedYieldsPerSpinIteration;
 }
+
+// INT32 QCALLTYPE ThreadNative::GetOptimalMaxSpinWaitsPerSpinIteration()
+// {
+//     QCALL_CONTRACT;
+
+//     INT32 optimalMaxNormalizedYieldsPerSpinIteration;
+
+//     BEGIN_QCALL;
+
+//     // RuntimeThread calls this function only once lazily and caches the result, so ensure initialization
+//     EnsureYieldProcessorNormalizedInitialized();
+//     optimalMaxNormalizedYieldsPerSpinIteration = g_optimalMaxNormalizedYieldsPerSpinIteration;
+
+//     END_QCALL;
+
+//     return optimalMaxNormalizedYieldsPerSpinIteration;
+// }
 
 FCIMPL1(void, ThreadNative::SpinWait, int iterations)
 {

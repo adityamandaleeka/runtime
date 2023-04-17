@@ -321,7 +321,7 @@ static const Entry s_QCall[] =
 #if defined(FEATURE_COMINTEROP)
     DllImportEntry(InterfaceMarshaler__ClearNative)
 #endif
-    DllImportEntry(GetOptimalMaxSpinWaitsPerSpinIterationInternal)
+    DllImportEntry(ThreadNative_GetOptimalMaxSpinWaitsPerSpinIteration)
 };
 
 const void* QCallResolveDllImport(const char* name)
