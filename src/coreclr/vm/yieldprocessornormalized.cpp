@@ -14,13 +14,7 @@ void InitializeYieldProcessorNormalizedCrst()
 
 static void InitializeYieldProcessorNormalized()
 {
-    CONTRACTL
-    {
-        NOTHROW;
-        GC_NOTRIGGER;
-        MODE_PREEMPTIVE;
-    }
-    CONTRACTL_END;
+    WRAPPER_NO_CONTRACT;
 
     CrstHolder lock(&s_initializeYieldProcessorNormalizedCrst);
 
@@ -98,13 +92,7 @@ static void InitializeYieldProcessorNormalized()
 
 void EnsureYieldProcessorNormalizedInitialized()
 {
-    CONTRACTL
-    {
-        NOTHROW;
-        GC_NOTRIGGER;
-        MODE_PREEMPTIVE;
-    }
-    CONTRACTL_END;
+    WRAPPER_NO_CONTRACT;
 
     if (!s_isYieldProcessorNormalizedInitialized)
     {

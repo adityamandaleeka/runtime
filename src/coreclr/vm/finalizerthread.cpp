@@ -382,10 +382,7 @@ DWORD WINAPI FinalizerThread::FinalizerThreadStart(void *args)
         {
             GetFinalizerThread()->SetBackground(TRUE);
 
-            {
-                GCX_PREEMP();
-                EnsureYieldProcessorNormalizedInitialized();
-            }
+            EnsureYieldProcessorNormalizedInitialized();
 
             while (!fQuitFinalizer)
             {
