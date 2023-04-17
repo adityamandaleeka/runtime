@@ -106,7 +106,7 @@ extern "C" UINT64 QCALLTYPE ThreadNative_GetCurrentOSThreadId();
 extern "C" void QCALLTYPE ThreadNative_Abort(QCall::ThreadHandle thread);
 extern "C" void QCALLTYPE ThreadNative_ResetAbort();
 
-extern "C" INT32 QCALLTYPE ThreadNative_GetOptimalMaxSpinWaitsPerSpinIteration()
+extern "C" INT32 QCALLTYPE ThreadNative_GetOptimalMaxSpinWaitsPerSpinIteration();
 
 #endif // _COMSYNCHRONIZABLE_H
 
