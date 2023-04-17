@@ -324,7 +324,7 @@ namespace System.Threading
 
         private static int s_optimalMaxSpinWaitsPerSpinIteration;
 
-        [DllImport(RuntimeHelpers.QCall)]
+        [DllImport(RuntimeHelpers.QCall, EntryPoint = "GetOptimalMaxSpinWaitsPerSpinIterationInternal")]
         private static extern int GetOptimalMaxSpinWaitsPerSpinIterationInternal();
 
         /// <summary>
